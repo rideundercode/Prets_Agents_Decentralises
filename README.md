@@ -23,7 +23,7 @@ Ce serveur Spring Boot génère des demandes de prêt aléatoires à la volée v
 #### Exemple de Requête
 ```http
 GET http://localhost:8080/api/loan_requests?count=5
-
+```
 
 
 ## Agents et Interaction
