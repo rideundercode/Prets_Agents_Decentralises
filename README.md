@@ -63,7 +63,8 @@ GET http://localhost:8080/api/loan_requests?count=5
         "creditScore": 522,
         "amount": 22895.0
     }
-]```
+]
+```
 
 ## Agents et Interaction
 
