@@ -1,5 +1,31 @@
 # Système de Gestion de Prêts avec Agents Décentralisés
 
+## Serveur de Génération de Données de Prêts
+
+### Description
+Ce serveur Spring Boot génère des demandes de prêt aléatoires à la volée via une API REST. Il permet de simuler des demandes de prêt, facilitant le développement et les tests d'un système de gestion de prêts.
+
+### Fonctionnalités
+- **Génération de Données Aléatoires** : Produire des informations de demande de prêt, incluant :
+  - Nom du client
+  - Montant du prêt
+  - Durée du prêt (en mois)
+  - Revenu du client
+  - Score de crédit
+
+### API Endpoint
+#### Génération de Demandes de Prêt
+- **URL** : `/api/loan_requests`
+- **Méthode** : `GET`
+- **Paramètres** :
+  - `count` (optionnel) : Nombre de demandes de prêt à générer (par défaut : 1).
+
+#### Exemple de Requête
+```http
+GET http://localhost:8080/api/loan_requests?count=5
+
+
+
 ## Agents et Interaction
 
 ### Définition des Agents
