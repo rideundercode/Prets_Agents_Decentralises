@@ -25,6 +25,45 @@ Ce serveur Spring Boot génère des demandes de prêt aléatoires à la volée v
 GET http://localhost:8080/api/loan_requests?count=5
 ```
 
+#### Exemple de Requête
+```http
+[
+    {
+        "name": "Client 685",
+        "term": 34,
+        "income": 118054.0,
+        "creditScore": 730,
+        "amount": 6260.0
+    },
+    {
+        "name": "Client 743",
+        "term": 19,
+        "income": 62321.0,
+        "creditScore": 371,
+        "amount": 13394.0
+    },
+    {
+        "name": "Client 677",
+        "term": 15,
+        "income": 75976.0,
+        "creditScore": 574,
+        "amount": 16700.0
+    },
+    {
+        "name": "Client 749",
+        "term": 13,
+        "income": 34300.0,
+        "creditScore": 326,
+        "amount": 6578.0
+    },
+    {
+        "name": "Client 352",
+        "term": 58,
+        "income": 34502.0,
+        "creditScore": 522,
+        "amount": 22895.0
+    }
+]```
 
 ## Agents et Interaction
 
