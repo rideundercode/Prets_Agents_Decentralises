@@ -13,30 +13,11 @@ import jade.wrapper.ControllerException;
 
 
 public class PrincipalContainer {
-    /* 
-    public static void main(String[] args) throws Exception {
-            
-        // Créer une instance de Runtime
-        Runtime runtime = Runtime.instance();
-
-        // Créer un profil pour le conteneur principal
-        ProfileImpl profile = new ProfileImpl();
-        profile.setParameter(Profile.MAIN_HOST, "localhost"); // Écoute sur localhost
-        profile.setParameter(Profile.MAIN_PORT, "1099"); // Port par défaut
-
-
-        // Créer le conteneur d'agents
-        AgentContainer container = runtime.createAgentContainer(profile);
-        
-        // Démarrer le conteneur
-        container.start(); // Cela démarre le conteneur, mais aucun agent n'est encore créé
-        System.out.println("Conteneur d'agents démarré sur " + profile.getParameter(Profile.MAIN_HOST, "null"));
-    }
-    */
 
     public static void main(String[] args) {
         SpringApplication.run(GestionpretApplication.class, args);
         demarrerAgents();
+        
     }
         
     public static void demarrerAgents() {
