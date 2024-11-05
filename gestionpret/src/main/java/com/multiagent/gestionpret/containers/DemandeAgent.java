@@ -3,8 +3,10 @@ package com.multiagent.gestionpret.containers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
+import jade.lang.acl.ACLMessage;
 
 public class DemandeAgent extends Agent {
     
@@ -27,13 +29,9 @@ public class DemandeAgent extends Agent {
                     for (LoanRequest request : requests) {
                         System.out.println("Demande de prêt générée : " + request);
                         
-                        // Évaluer la demande de prêt et afficher la décision
+                        // Évaluer la demande de prêt et envoyer la décision
                         boolean decision = peutAccorderPret(request);
-                        if (decision) {
-                            System.out.println("Demande de prêt approuvée pour : " + request.getName());
-                        } else {
-                            System.out.println("Rejeté : Score de crédit trop bas ou taux d'endettement trop élevé.");
-                        }
+                        envoyerDecision(request.getName(), decision);
                     }
                 } else {
                     System.out.println("Aucune demande de prêt générée.");
@@ -66,5 +64,15 @@ public class DemandeAgent extends Agent {
     private double calculerTauxEndettement(double income, double amount, int term) {
         double mensualite = amount / term; // Simplification : remboursements mensuels égaux
         return mensualite / income;
+    }
+
+    private void envoyerDecision(String clientName, boolean decision) {
+        ACLMessage message = new ACLMessage(ACLMessage.INFORM);
+        message.addReceiver(new AID("DecisionAgent", AID.ISLOCALNAME)); // Assurez-vous que l'Agent de Décision est enregistré
+        message.setContent(decision ? "APPROUVÉ pour " + clientName : "REJETÉ pour " + clientName);
+        message.setConversationId("loan-decision");
+
+        send(message); // Envoyer le message
+        System.out.println("Décision envoyée pour " + clientName + ": " + (decision ? "APPROUVÉ" : "REJETÉ"));
     }
 }
